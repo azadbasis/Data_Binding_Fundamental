@@ -5,7 +5,6 @@ public class DataSource {
     public static DataSource get(String name){
         return new DataSource(name);
     }
-
     public DataSource(String name) {
         this.name = name;
     }
