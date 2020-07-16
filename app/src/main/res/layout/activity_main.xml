@@ -6,6 +6,9 @@
         <variable
             name="dataSource"
             type="com.me.databinding.DataSource" />
+        <variable
+            name="includeSource"
+            type="com.me.databinding.DataSource" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -32,5 +35,7 @@
             android:name="com.me.databinding.DataFragment"
             />
 
+        <include layout="@layout/include_view"
+            app:includeSource="@{includeSource}"/>
     </LinearLayout>
 </layout>

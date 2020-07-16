@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
         // TODO: 7/10/2020 Get data
         DataSource dataSource = DataSource.get("Azharul Islam");
+        DataSource includeSource = DataSource.get("Include DataSource");
 
         // TODO: 7/10/2020 Assign value to element property
         // hello.setText(dataSource.getMessage());
@@ -25,5 +26,6 @@ public class MainActivity extends AppCompatActivity {
         // TODO: 7/11/2020 set once per bound variable
         // TODO: 7/11/2020 One line per attribute binding,plus a line to set the bound variable
         binding.setDataSource(dataSource);
+        binding.setIncludeSource(includeSource);
     }
 }
