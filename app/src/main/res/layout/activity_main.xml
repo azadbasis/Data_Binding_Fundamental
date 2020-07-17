@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
-
     <data>
-
         <variable
             name="dataSource"
             type="com.me.databinding.DataSource" />
@@ -27,15 +25,18 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
         <fragment
             android:id="@+id/data_fragment"
-            android:layout_marginTop="12dp"
+            android:name="com.me.databinding.DataFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:name="com.me.databinding.DataFragment"
-            />
+            android:layout_marginTop="12dp" />
 
-        <include layout="@layout/include_view"
-            app:includeSource="@{includeSource}"/>
+        <include
+            layout="@layout/include_view"
+            app:includeSource="@{includeSource}" />
+
+        <include layout="@layout/data_view" />
     </LinearLayout>
 </layout>
