@@ -5,13 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.me.databinding.databinding.ActivityMainBinding;
+import com.me.databinding.databinding.ExpressionsBinding;
 import com.me.databinding.databinding.ItemViewBinding;
 
 public class MainActivity extends AppCompatActivity {
@@ -24,11 +23,9 @@ public class MainActivity extends AppCompatActivity {
         ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         // TODO: 7/10/2020 Find layout element and assign to local variable
         //   TextView hello = (TextView) findViewById(R.id.hello);
-
         // TODO: 7/10/2020 Get data
         DataSource dataSource = DataSource.get("Azharul Islam");
         DataSource includeSource = DataSource.get("Include DataSource");
-
         // TODO: 7/10/2020 Assign value to element property
         // hello.setText(dataSource.getMessage());
         // TODO: 7/11/2020 Bind the data to the view
@@ -36,9 +33,20 @@ public class MainActivity extends AppCompatActivity {
         // TODO: 7/11/2020 One line per attribute binding,plus a line to set the bound variable
         binding.setDataSource(dataSource);
         binding.setIncludeSource(includeSource);
-      // TODO: 7/17/2020 Setup recyclerview
+        // TODO: 7/17/2020 Setup recyclerview
         binding.list.setLayoutManager(new LinearLayoutManager(this));
         binding.list.setAdapter(new DataSourceAdapter(getLayoutInflater()));
+        //TODO: Setup yogurt menu
+        ExpressionsBinding raspberryBinding =
+                ExpressionsBinding.inflate(getLayoutInflater(), binding.menu, false);
+        raspberryBinding.setItem(new MenuItem(false, "Raspberry", "$2.99", 2));
+        binding.menu.addView(raspberryBinding.getRoot());
+
+        ExpressionsBinding vanillaSpecialBinding =
+                ExpressionsBinding.inflate(getLayoutInflater(), binding.menu, false);
+        vanillaSpecialBinding.setItem(new MenuItem(true, "Vanilla", "$0.99", 1));
+        binding.menu.addView(vanillaSpecialBinding.getRoot());
+
     }
 
     private class DataSourceAdapter extends RecyclerView.Adapter<ViewHolder> {
@@ -57,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-            DataSource dataSource = DataSource.get("Item Binding" + position);
+            DataSource dataSource = DataSource.get("Item Binding-" + position);
             ItemViewBinding binding = DataBindingUtil.getBinding(holder.itemView);
             binding.setDataSource(dataSource);
         }

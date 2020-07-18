@@ -38,6 +38,11 @@
             app:includeSource="@{includeSource}" />
 
         <include layout="@layout/data_view" />
+        <LinearLayout
+            android:id="@+id/menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/list"
