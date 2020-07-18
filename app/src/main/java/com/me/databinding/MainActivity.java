@@ -1,17 +1,23 @@
 package com.me.databinding;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+
+import com.me.databinding.DynamicBinding.DynamicActivity;
 import com.me.databinding.databinding.ActivityMainBinding;
 import com.me.databinding.databinding.ExpressionsBinding;
 import com.me.databinding.databinding.ItemViewBinding;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -46,7 +52,13 @@ public class MainActivity extends AppCompatActivity {
                 ExpressionsBinding.inflate(getLayoutInflater(), binding.menu, false);
         vanillaSpecialBinding.setItem(new MenuItem(true, "Vanilla", "$0.99", 1));
         binding.menu.addView(vanillaSpecialBinding.getRoot());
-
+        Button tvButton = findViewById(R.id.tvButton);
+        tvButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, DynamicActivity.class));
+            }
+        });
     }
 
     private class DataSourceAdapter extends RecyclerView.Adapter<ViewHolder> {
