@@ -5,18 +5,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.BindingAdapter;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.me.databinding.DynamicBinding.DynamicActivity;
-import com.me.databinding.databinding.ActivityDynamicBinding;
 import com.me.databinding.databinding.ActivityMainBinding;
 import com.me.databinding.databinding.ExpressionsBinding;
 import com.me.databinding.databinding.ItemViewBinding;
