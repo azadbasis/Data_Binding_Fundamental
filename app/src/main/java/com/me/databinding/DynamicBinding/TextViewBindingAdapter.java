@@ -1,5 +1,4 @@
 package com.me.databinding.DynamicBinding;
-
 import android.widget.TextView;
 import androidx.databinding.BindingAdapter;
 

@@ -8,6 +8,8 @@
     // Yogurt menu
     <string name="special">Special: %s</string>
     <string name="price">Price: %s</string>
+    <string name="adapter_customization">Data Binding Adapters Customization</string>
+    <string name="binding_listener">Bind Listener</string>
     <string-array name="sizes">
         <item>Small</item>
         <item>Medium</item>

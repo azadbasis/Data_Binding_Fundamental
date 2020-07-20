@@ -2,13 +2,28 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <data>
+
         <variable
             name="dataSource"
             type="com.me.databinding.DataSource" />
+
         <variable
             name="includeSource"
             type="com.me.databinding.DataSource" />
+
+        <variable
+            name="customAdapterListener"
+            type="com.me.databinding.MainActivity.CustomAdapterListeners" />
+
+        <variable
+            name="listener"
+            type="com.me.databinding.MainActivity.Listener" />
+
+        <variable
+            name="number"
+            type="int" />
     </data>
 
     <LinearLayout
@@ -38,21 +53,42 @@
             app:includeSource="@{includeSource}" />
 
         <include layout="@layout/data_view" />
+
         <LinearLayout
             android:id="@+id/menu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"/>
+            android:orientation="vertical" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
         <Button
-            android:id="@+id/tvButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/app_name"
-            />
+            android:layout_gravity="center"
+            android:onClick="@{customAdapterListener}"
+            android:text="@string/adapter_customization" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:onClick="@{listener}"
+                android:text="@string/binding_listener" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:numberText="@{number}" />
+        </LinearLayout>
+
     </LinearLayout>
 </layout>

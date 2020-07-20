@@ -6,14 +6,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.BindingAdapter;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.me.databinding.DynamicBinding.DynamicActivity;
+import com.me.databinding.databinding.ActivityDynamicBinding;
 import com.me.databinding.databinding.ActivityMainBinding;
 import com.me.databinding.databinding.ExpressionsBinding;
 import com.me.databinding.databinding.ItemViewBinding;
@@ -52,13 +55,41 @@ public class MainActivity extends AppCompatActivity {
                 ExpressionsBinding.inflate(getLayoutInflater(), binding.menu, false);
         vanillaSpecialBinding.setItem(new MenuItem(true, "Vanilla", "$0.99", 1));
         binding.menu.addView(vanillaSpecialBinding.getRoot());
-        Button tvButton = findViewById(R.id.tvButton);
-        tvButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, DynamicActivity.class));
-            }
-        });
+//        Button tvButton = findViewById(R.id.tvButton);
+//        tvButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(MainActivity.this, DynamicActivity.class));
+//            }
+//        });
+        binding.setCustomAdapterListener(new CustomAdapterListeners());
+        binding.setListener(new Listener(binding));
+    }
+
+    public class CustomAdapterListeners implements View.OnClickListener {
+
+        @Override
+        public void onClick(View view) {
+            startActivity(new Intent(MainActivity.this, DynamicActivity.class));
+        }
+    }
+
+    public static class Listener implements View.OnClickListener {
+        ActivityMainBinding binding;
+
+        public Listener(com.me.databinding.databinding.ActivityMainBinding binding) {
+            this.binding = binding;
+        }
+
+        @Override
+        public void onClick(View view) {
+        int number=binding.getNumber();
+        binding.setNumber(++number);
+        }
+    }
+     @BindingAdapter("bind:numberText")
+    public static void setNumber(TextView textView, int number) {
+        textView.setText(String.valueOf(number));
     }
 
     private class DataSourceAdapter extends RecyclerView.Adapter<ViewHolder> {
